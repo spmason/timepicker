@@ -1,0 +1,10 @@
+{
+  "name": "timepicker",
+  "version": "0.1.0",
+  "main": "lib/timepicker/timepicker.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ]
+}
