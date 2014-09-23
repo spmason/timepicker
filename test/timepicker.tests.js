@@ -99,7 +99,6 @@ define([
 
         describe('when building the picker list', function() {
             var defaultHtml = [
-                '<li data-time="--:--">--:--</li>',
                 '<li data-time="00:00">00:00</li>',
                 '<li data-time="01:00">01:00</li>',
                 '<li data-time="02:00">02:00</li>',
@@ -134,7 +133,6 @@ define([
 
             it('builds the preset times based on a custom interval', function() {
                 var customPresetHtml = [
-                    '<li data-time="--:--">--:--</li>',
                     '<li data-time="00:00">00:00</li>',
                     '<li data-time="06:00">06:00</li>',
                     '<li data-time="12:00">12:00</li>',
@@ -442,26 +440,26 @@ define([
             var params = [{
                 timePickerHeight: 90,
                 selectedTimeHeight: 30,
-                currentTime: '06:00', // index 13
-                expectedScrollAdjustment: 360, // difference between current and ideal positions
+                currentTime: '06:00', // index 12
+                expectedScrollAdjustment: 330, // difference between current and ideal positions
                 interval: '00:30'
             }, {
                 timePickerHeight: 90,
                 selectedTimeHeight: 30,
-                currentTime: '02:00', // index 3
-                expectedScrollAdjustment: 60,
+                currentTime: '02:00', // index 2
+                expectedScrollAdjustment: 30,
                 interval: '01:00'
             }, {
                 timePickerHeight: 90,
                 selectedTimeHeight: 30,
-                currentTime: '01:10', // index 8
-                expectedScrollAdjustment: 210,
+                currentTime: '01:10', // index 7
+                expectedScrollAdjustment: 180,
                 interval: '00:10'
             }, {
                 timePickerHeight: 90,
                 selectedTimeHeight: 30,
-                currentTime: '06:50', // index 42
-                expectedScrollAdjustment: 1230,
+                currentTime: '06:50', // index 41
+                expectedScrollAdjustment: 1200,
                 interval: '00:10'
             }];
 
