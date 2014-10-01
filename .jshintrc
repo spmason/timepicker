@@ -24,7 +24,7 @@
                                 //   "single" : require single quotes
                                 //   "double" : require double quotes
     "undef"         : true,     // true: Require all non-global variables to be declared (prevents global leaks)
-    "unused"        : "vars",   // Require all defined variables and args be used
+    "unused"        : true,   // Require all defined variables and args be used
                                 // true   : Disallow unused vars/args but allow unused args that are followed by a used arg
                                 // false  : Allow all unused variables/arguments
                                 // vars   : Allow unused arguments
