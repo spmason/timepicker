@@ -243,36 +243,6 @@ define([
                     expect($('.time-picker').is(':visible')).toEqual(false);
                 });
             });
-
-            describe('when a time is already selected', function() {
-                beforeEach(function() {
-                    $startTime
-                        .timepicker()
-                        .timepicker('select', '03:00')
-                        .timepicker('open');
-                });
-
-                describe('on mouseenter', function() {
-                    beforeEach(function() {
-                        $('.time-picker').trigger('mouseenter');
-                    });
-
-                    it('adds the class "isSelecting" to the picker', function() {
-                        expect($('.time-picker').hasClass('time-picker--isSelecting')).toEqual(true);
-                    });
-                });
-
-                describe('on mouseleave', function() {
-                    beforeEach(function() {
-                        $('.time-picker').trigger('mouseenter');
-                        $('.time-picker').trigger('mouseleave');
-                    });
-
-                    it('removes the class "isSelecting" from the picker', function() {
-                        expect($('.time-picker').hasClass('time-picker--isSelecting')).toEqual(false);
-                    });
-                });
-            });
         });
 
         describe('keyboard events', function() {

@@ -35,13 +35,12 @@ body {
     color: #333;
 }
 
-.time-picker.time-picker--isSelecting .time-picker--selected {
+.time-picker:hover .time-picker--selected {
     background: #eee;
 }
 
 .time-picker li:hover,
-.time-picker li.time-picker--selected,
-.time-picker.time-picker--isSelecting .time-picker--selected:hover {
+.time-picker .time-picker--selected,
+.time-picker:hover .time-picker--selected:hover {
     background: #ddd;
 }
-

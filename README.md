@@ -58,9 +58,6 @@ $.timepicker.defaults = {
     // class name to add to the currently selected time
     pickerSelectedClassName: 'time-picker--selected',
 
-    // class name added to the picker when the mouse has entered the list
-    isSelectingClassName: 'time-picker--isSelecting',
-
      // use 1 hour intervals when generating the list
     interval: '01:00'
 };
