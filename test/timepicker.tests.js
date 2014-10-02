@@ -427,7 +427,7 @@ define([
             });
         });
 
-        describe('when the time picker field looses focus while user is selecting a time', function() {
+        describe('when the time picker field loses focus while user is selecting a time', function() {
             var startTime;
 
             beforeEach(function() {
