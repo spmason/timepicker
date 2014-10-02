@@ -17,4 +17,4 @@ export PATH=$PATH:$(npm bin)
 USE_PORT=$(findRandomTcpPort)
 
 echo Running testem
-testem ci -l phantomjs -t tests/index.html -p $USE_PORT
+testem ci -l phantomjs -p $USE_PORT
