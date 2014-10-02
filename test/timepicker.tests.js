@@ -413,6 +413,17 @@ define([
                     expect($('.time-picker').find('.time-picker--selected').data('time')).toEqual('08:00');
                 });
             });
+
+            describe('"deselect" method', function() {
+                beforeEach(function() {
+                    startTime.timepicker('select', '03:00');
+                    startTime.timepicker('deselect');
+                });
+
+                it('deselects the currently selected time', function() {
+                    expect($('.time-picker').find('.time-picker--selected').length).toEqual(0);
+                });
+            });
         });
 
         describe('when the time picker field loses focus while user is selecting a time', function() {
@@ -548,7 +559,6 @@ define([
 
                         sandbox.spy($picker, 'scrollTop');
                     });
-
 
                     it('should scroll the time picker as if the selected time was ' + param.presetTime, function() {
                         $startTime.val(param.presetTime);
