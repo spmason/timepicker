@@ -220,18 +220,16 @@ define([
                 });
             });
 
-            describe('when the input field gains focus', function() {
-                beforeEach(function() {
-                    $startTime.timepicker().focus();
-                });
-
-                it('should show the time picker', function() {
-                    expect($('.time-picker').is(':visible')).toEqual(true);
-                });
-            });
-
             describe('when a time is clicked', function() {
+                var focusSpy;
+
                 beforeEach(function() {
+                    $startTime.timepicker();
+
+                    focusSpy = sandbox.spy();
+
+                    $startTime.on('focus', focusSpy);
+
                     $startTime.timepicker().click();
 
                     $('.time-picker').find('[data-time="01:00"]').click();
@@ -243,10 +241,6 @@ define([
 
                 it('hides the time picker', function() {
                     expect($('.time-picker').is(':visible')).toEqual(false);
-                });
-
-                it('retains focus on the input field', function() {
-                    expect($startTime.is(':focus')).toEqual(true);
                 });
             });
 
