@@ -374,9 +374,14 @@ define([
             });
 
             describe('$elem.timepicker("open")', function() {
+                var changeFired = sinon.spy();
                 beforeEach(function() {
+                    $startTime.on('change', changeFired);
                     startTime.val('09:00');
                     startTime.timepicker('open');
+                });
+                afterEach(function(){
+                    $startTime.on('change', changeFired);
                 });
 
                 it('opens the time picker', function() {
@@ -385,6 +390,10 @@ define([
 
                 it('checks the associated input field value and selects the time if it is a preset', function() {
                     expect($('.time-picker').find('.time-picker--selected').data('time')).toEqual('09:00');
+                });
+
+                it('does not trigger a "change" event', function() {
+                    expect(changeFired.called).toEqual(false);
                 });
             });
 
