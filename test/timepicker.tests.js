@@ -460,8 +460,6 @@ define([
                 interval: '00:10'
             }];
 
-
-
             params.forEach(function(param) {
                 var testDesc = '';
 
@@ -525,7 +523,6 @@ define([
                 presetTime: '01:45',
                 interval: '00:05'
             }];
-
 
             params.forEach(function(param) {
                 describe('when the custom time is ' + param.customTime + ' with the interval ' + param.interval, function() {
