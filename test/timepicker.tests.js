@@ -335,7 +335,7 @@ define([
 
                 $(':timepicker').timepicker('select', '03:00');
 
-                expect($('input').filter(function(index) {
+                expect($('input').filter(function() {
                     return $(this).val() === '03:00';
                 }).length).toEqual(2);
             });
