@@ -159,58 +159,6 @@ define([
 
         });
 
-        describe('when the input field is clicked', function() {
-            beforeEach(function() {
-                $startTime.timepicker().click();
-            });
-
-            it('shows the time picker', function() {
-                expect($('.time-picker').is(':visible')).toEqual(true);
-            });
-        });
-
-        describe('when the input field looses focus', function() {
-            beforeEach(function() {
-                $startTime.timepicker().click();
-            });
-
-            it('should hide the time picker', function() {
-                $startTime.blur();
-
-                expect($('.time-picker').is(':visible')).toEqual(false);
-            });
-        });
-
-        describe('when the input field gains focus', function() {
-            beforeEach(function() {
-                $startTime.timepicker().focus();
-            });
-
-            it('should show the time picker', function() {
-                expect($('.time-picker').is(':visible')).toEqual(true);
-            });
-        });
-
-        describe('when a time is clicked', function() {
-            beforeEach(function() {
-                $startTime.timepicker().click();
-
-                $('.time-picker').find('[data-time="01:00"]').click();
-            });
-
-            it('sets the input field value to the selected time', function() {
-                expect($startTime.val()).toEqual('01:00');
-            });
-
-            it('hides the time picker', function() {
-                expect($('.time-picker').is(':visible')).toEqual(false);
-            });
-
-            it('retains focus on the input field', function() {
-                expect($startTime.is(':focus')).toEqual(true);
-            });
-        });
-
         describe('events', function() {
             beforeEach(function() {
                 $startTime.timepicker().click();
@@ -258,6 +206,58 @@ define([
         });
 
         describe('mouse events', function() {
+            describe('when the input field is clicked', function() {
+                beforeEach(function() {
+                    $startTime.timepicker().click();
+                });
+
+                it('shows the time picker', function() {
+                    expect($('.time-picker').is(':visible')).toEqual(true);
+                });
+            });
+
+            describe('when the input field looses focus', function() {
+                beforeEach(function() {
+                    $startTime.timepicker().click();
+                });
+
+                it('should hide the time picker', function() {
+                    $startTime.blur();
+
+                    expect($('.time-picker').is(':visible')).toEqual(false);
+                });
+            });
+
+            describe('when the input field gains focus', function() {
+                beforeEach(function() {
+                    $startTime.timepicker().focus();
+                });
+
+                it('should show the time picker', function() {
+                    expect($('.time-picker').is(':visible')).toEqual(true);
+                });
+            });
+
+            describe('when a time is clicked', function() {
+                beforeEach(function() {
+                    $startTime.timepicker().click();
+
+                    $('.time-picker').find('[data-time="01:00"]').click();
+                });
+
+                it('sets the input field value to the selected time', function() {
+                    expect($startTime.val()).toEqual('01:00');
+                });
+
+                it('hides the time picker', function() {
+                    expect($('.time-picker').is(':visible')).toEqual(false);
+                });
+
+                it('retains focus on the input field', function() {
+                    expect($startTime.is(':focus')).toEqual(true);
+                });
+            });
+
             describe('when a time is already selected', function() {
                 beforeEach(function() {
                     $startTime
