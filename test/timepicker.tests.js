@@ -12,7 +12,8 @@ define([
         $testArea = $('#testArea'),
         $elems,
         $startTime,
-        $endTime;
+        $endTime,
+        DOWN_ARROW_CODE = 40;
 
     describe('TimePicker', function() {
         beforeEach(function() {
@@ -312,7 +313,7 @@ define([
 
                     $startTime.trigger({
                         type: 'keydown',
-                        keyCode: 40
+                        keyCode: DOWN_ARROW_CODE
                     });
 
                     expect($('.time-picker').is(':visible')).toEqual(true);
