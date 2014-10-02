@@ -312,20 +312,20 @@ define([
             });
         });
 
-        describe('methods', function() {
+        describe('when calling timepicker methods', function() {
             var startTime;
 
             beforeEach(function() {
                 startTime = $startTime.timepicker().click();
             });
 
-            it('only allows valid methods to be called', function() {
+            it('throws an error if the method is invalid', function() {
                 expect(function(){
                     startTime.timepicker('invalidMethod');
                 }).toThrow('Invalid timepicker method');
             });
 
-            it('are called for all matching timepickers', function() {
+            it('calls the method on all matching timepickers', function() {
                 $endTime.timepicker();
 
                 // open all time pickers
@@ -341,7 +341,7 @@ define([
             });
 
 
-            describe('$elem.timepicker("destroy")', function() {
+            describe('"destroy" method', function() {
                 beforeEach(function() {
                     startTime.timepicker('destroy');
                 });
@@ -361,7 +361,7 @@ define([
                 });
             });
 
-            describe('$elem.timepicker("open")', function() {
+            describe('"open" method', function() {
                 var changeFired = sinon.spy();
                 beforeEach(function() {
                     $startTime.on('change', changeFired);
@@ -385,7 +385,7 @@ define([
                 });
             });
 
-            describe('$elem.timepicker("close")', function() {
+            describe('"close" method', function() {
                 beforeEach(function() {
                     startTime.timepicker('close');
                 });
@@ -395,7 +395,7 @@ define([
                 });
             });
 
-            describe('$elem.timepicker("select", [time])', function() {
+            describe('"select" method', function() {
                 beforeEach(function() {
                     startTime.timepicker('select', '03:00');
                 });
