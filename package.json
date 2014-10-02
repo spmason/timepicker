@@ -14,14 +14,9 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    "serve": "*",
-    "mocha": "~1.7.4"
+    "bower": "^1.3.12",
+    "mocha": "~1.7.4",
+    "serve": "*"
   },
-  "optionalDependencies": {},
-  "volo": {
-    "dependencies": {
-      "jquery": "jquery/jquery",
-      "underscore": "documentcloud/underscore"
-    }
-  }
+  "optionalDependencies": {}
 }
