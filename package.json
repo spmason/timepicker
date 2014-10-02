@@ -1,0 +1,23 @@
+{
+  "name": "timepicker",
+  "description": "time picker",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/BrandwatchLtd/timepicker.git"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/mit-license.php"
+    }
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "bower": "^1.3.12",
+    "mocha": "~1.7.4",
+    "serve": "*",
+    "testem": "^0.6.20"
+  },
+  "optionalDependencies": {}
+}
