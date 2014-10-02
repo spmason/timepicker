@@ -48,13 +48,9 @@ define([
             });
 
             it('throws an error if called with a number', function() {
-                var errorMessage = '';
-                try {
+                expect(function(){
                     startTime = $startTime.timepicker(2);
-                } catch (e) {
-                    errorMessage = e.message;
-                }
-                expect(errorMessage).toEqual('Invalid timepicker call');
+                }).toThrow('Invalid timepicker call');
             });
 
             it('destroys the current timepicker attached to the element if it exists', function() {
@@ -147,17 +143,12 @@ define([
             });
 
             it('throws an error if the custom interval not a valid time', function() {
-                var errorMessage = '';
-                try {
+                expect(function(){
                     $startTime.timepicker({
                         interval: '24:00'
                     });
-                } catch (e) {
-                    errorMessage = e.message;
-                }
-                expect(errorMessage).toEqual('Invalid interval, must be a valid time');
+                }).toThrow('Invalid interval, must be a valid time');
             });
-
         });
 
         describe('events', function() {
@@ -329,13 +320,9 @@ define([
             });
 
             it('only allows valid methods to be called', function() {
-                var errorMessage = '';
-                try {
+                expect(function(){
                     startTime.timepicker('invalidMethod');
-                } catch (e) {
-                    errorMessage = e.message;
-                }
-                expect(errorMessage).toEqual('Invalid timepicker method');
+                }).toThrow('Invalid timepicker method');
             });
 
             it('are called for all matching timepickers', function() {
