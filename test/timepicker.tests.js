@@ -216,7 +216,7 @@ define([
                 });
             });
 
-            describe('when the input field looses focus', function() {
+            describe('when the input field loses focus', function() {
                 beforeEach(function() {
                     $startTime.timepicker().click();
                 });
@@ -290,7 +290,7 @@ define([
         });
 
         describe('keyboard events', function() {
-            describe('when onKeyDown is triggered on the input field', function() {
+            describe('when keydown is triggered on the input field', function() {
                 beforeEach(function() {
                     $startTime
                         .timepicker()
