@@ -1,6 +1,8 @@
 timepicker
 ==========
 
+[![Build Status](https://travis-ci.org/BrandwatchLtd/timepicker.svg?branch=master)](https://travis-ci.org/BrandwatchLtd/timepicker)
+
 very simple time picker, using [moment.js](http://momentjs.com/)
 
 ## Running the demos
