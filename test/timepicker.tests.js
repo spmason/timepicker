@@ -1,8 +1,9 @@
-/* global define, sinon, $, expect, Event */
+/* global define, $, expect */
 
 define([
+    'sinon',
     'lib/timepicker/timepicker'
-], function(timepicker) {
+], function(sinon, timepicker) {
     'use strict';
 
     var sandbox,
