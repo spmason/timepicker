@@ -10,23 +10,22 @@ very simple time picker, using [moment.js](http://momentjs.com/)
 
 Pull down the repo then execute:
 
-    ./serve.sh
+    npm start
 
-and open `http://localhost:8080/demo`
+and open `http://localhost:9009/demo`
 
 
 ## Running the tests
 
 Run
 
-    npm install testem -g
-    testem
+    ./unitTests
 
 Or pull down the repo then execute:
 
-    ./serve.sh
+    npm start
 
-and open `http://localhost:8080/test`
+and open `http://localhost:9009/test`
 
 ## Documentation
 
