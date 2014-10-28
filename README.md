@@ -7,13 +7,11 @@ very simple time picker, using [moment.js](http://momentjs.com/)
 
 ## Running the demos
 
-
 Pull down the repo then execute:
 
     npm start
 
 and open `http://localhost:9009/demo`
-
 
 ## Running the tests
 
