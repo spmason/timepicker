@@ -42,7 +42,7 @@ jQuery(function($) {
 </script>
 ```
 
-```$.timepicker()``` enhances an input field by showing a list of preset times. Clicking an option updates the input field value.
+`$.timepicker()` enhances an input field by showing a list of preset times. Clicking an option updates the input field value.
 
 ### Defaults
 
@@ -121,7 +121,7 @@ $('input').timepicker('destroy');
 
 __Selector__
 
-You can use the ```:timepicker``` custom selector to find all active time pickers.
+You can use the `:timepicker` custom selector to find all active time pickers.
 
 ```
 // close all timepickers
