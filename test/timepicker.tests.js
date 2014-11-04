@@ -281,18 +281,18 @@ define([
             });
 
             describe('"open" method', function() {
-                var changeFired,
-                    onOpenFired,
+                var changeSpy,
+                    onOpenSpy,
                     $picker;
 
                 beforeEach(function() {
-                    changeFired = sandbox.spy();
-                    onOpenFired = sandbox.spy();
+                    changeSpy = sandbox.spy();
+                    onOpenSpy = sandbox.spy();
 
                     $picker = startTime.data('timepicker').$picker;
 
-                    $startTime.data('timepicker').bind('onOpen', onOpenFired);
-                    $startTime.on('change', changeFired);
+                    $startTime.data('timepicker').bind('onOpen', onOpenSpy);
+                    $startTime.on('change', changeSpy);
                     sandbox.spy($picker, 'scrollTop');
 
                     startTime.val('09:00');
@@ -308,22 +308,22 @@ define([
                 });
 
                 it('does not trigger a "change" event', function() {
-                    expect(changeFired.calledOnce).toEqual(false);
+                    expect(changeSpy.calledOnce).toEqual(false);
                 });
 
                 it('triggers an "onOpen" event', function() {
-                    expect(onOpenFired.calledOnce).toEqual(true);
+                    expect(onOpenSpy.calledOnce).toEqual(true);
                 });
 
                 it('does not trigger "onOpen" if timepicker is already open', function() {
-                    $startTime.data('timepicker').bind('onOpen', onOpenFired);
+                    $startTime.data('timepicker').bind('onOpen', onOpenSpy);
 
-                    expect(onOpenFired.callCount).toEqual(1);
+                    expect(onOpenSpy.callCount).toEqual(1);
 
                     startTime.timepicker('open');
                     startTime.timepicker('open');
 
-                    expect(onOpenFired.callCount).toEqual(1);
+                    expect(onOpenSpy.callCount).toEqual(1);
                 });
             });
 
@@ -338,15 +338,15 @@ define([
             });
 
             describe('"select" method', function() {
-                var onSelectFired,
+                var onSelectSpy,
                     $picker;
 
                 beforeEach(function() {
                     $picker = startTime.data('timepicker').$picker;
 
-                    onSelectFired = sandbox.spy();
+                    onSelectSpy = sandbox.spy();
 
-                    $startTime.data('timepicker').bind('onSelect', onSelectFired);
+                    $startTime.data('timepicker').bind('onSelect', onSelectSpy);
 
                     startTime.timepicker('open');
                 });
@@ -369,14 +369,14 @@ define([
                 it('triggers an "onSelect" event with the selected time', function() {
                     startTime.timepicker('select', '03:00');
 
-                    expect(onSelectFired.calledOnce).toEqual(true);
-                    expect(onSelectFired.args[0][0]).toEqual('03:00');
+                    expect(onSelectSpy.calledOnce).toEqual(true);
+                    expect(onSelectSpy.args[0][0]).toEqual('03:00');
                 });
 
                 it('does not trigger an "onSelect" event if silent is true', function() {
                     startTime.timepicker('select', '03:00', {silent: true});
 
-                    expect(onSelectFired.called).toEqual(false);
+                    expect(onSelectSpy.called).toEqual(false);
                 });
             });
 
