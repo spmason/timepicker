@@ -152,52 +152,6 @@ define([
             });
         });
 
-        describe('events', function() {
-            beforeEach(function() {
-                $startTime.timepicker().click();
-            });
-
-            describe('when open.timepicker is triggered', function() {
-                beforeEach(function() {
-                    $('.time-picker').hide();
-                });
-                it('shows the time picker', function() {
-                    $startTime.data('timepicker').trigger('open.timepicker');
-
-                    expect($('.time-picker').is(':visible')).toEqual(true);
-                });
-            });
-
-            describe('when close.timepicker is triggered', function() {
-                beforeEach(function() {
-                    $('.time-picker').show();
-                });
-                it('hides the time picker', function() {
-                    $startTime.data('timepicker').trigger('close.timepicker');
-
-                    expect($('.time-picker').is(':visible')).toEqual(false);
-                });
-            });
-
-            describe('when select.timepicker is triggered with a preset time', function() {
-                it('selects the time and updates the input field', function() {
-                    $startTime.data('timepicker').trigger('select.timepicker', '04:00');
-
-                    expect($startTime.val()).toEqual('04:00');
-                    expect($('.time-picker').find('.time-picker--selected').length).toEqual(1);
-                    expect($('.time-picker').find('.time-picker--selected').data('time')).toEqual('04:00');
-                });
-
-                it('unselects the currently selected time', function() {
-                    $startTime.data('timepicker').trigger('select.timepicker', '04:00');
-                    $startTime.data('timepicker').trigger('select.timepicker', '08:00');
-
-                    expect($('.time-picker').find('.time-picker--selected').length).toEqual(1);
-                    expect($('.time-picker').find('.time-picker--selected').data('time')).toEqual('08:00');
-                });
-            });
-        });
-
         describe('mouse events', function() {
             describe('when the input field is clicked', function() {
                 beforeEach(function() {
@@ -281,7 +235,7 @@ define([
             var startTime;
 
             beforeEach(function() {
-                startTime = $startTime.timepicker().click();
+                startTime = $startTime.timepicker();
             });
 
             it('throws an error if the method is invalid', function() {
@@ -327,14 +281,22 @@ define([
             });
 
             describe('"open" method', function() {
-                var changeFired = sinon.spy();
+                var changeSpy,
+                    onOpenSpy,
+                    $picker;
+
                 beforeEach(function() {
-                    $startTime.on('change', changeFired);
+                    changeSpy = sandbox.spy();
+                    onOpenSpy = sandbox.spy();
+
+                    $picker = startTime.data('timepicker').$picker;
+
+                    $startTime.data('timepicker').bind('onOpen', onOpenSpy);
+                    $startTime.on('change', changeSpy);
+                    sandbox.spy($picker, 'scrollTop');
+
                     startTime.val('09:00');
                     startTime.timepicker('open');
-                });
-                afterEach(function(){
-                    $startTime.on('change', changeFired);
                 });
 
                 it('opens the time picker', function() {
@@ -346,7 +308,22 @@ define([
                 });
 
                 it('does not trigger a "change" event', function() {
-                    expect(changeFired.called).toEqual(false);
+                    expect(changeSpy.calledOnce).toEqual(false);
+                });
+
+                it('triggers an "onOpen" event', function() {
+                    expect(onOpenSpy.calledOnce).toEqual(true);
+                });
+
+                it('does not trigger "onOpen" if timepicker is already open', function() {
+                    $startTime.data('timepicker').bind('onOpen', onOpenSpy);
+
+                    expect(onOpenSpy.callCount).toEqual(1);
+
+                    startTime.timepicker('open');
+                    startTime.timepicker('open');
+
+                    expect(onOpenSpy.callCount).toEqual(1);
                 });
             });
 
@@ -361,11 +338,22 @@ define([
             });
 
             describe('"select" method', function() {
+                var onSelectSpy,
+                    $picker;
+
                 beforeEach(function() {
-                    startTime.timepicker('select', '03:00');
+                    $picker = startTime.data('timepicker').$picker;
+
+                    onSelectSpy = sandbox.spy();
+
+                    $startTime.data('timepicker').bind('onSelect', onSelectSpy);
+
+                    startTime.timepicker('open');
                 });
 
                 it('selects the time and updates the input field', function() {
+                    startTime.timepicker('select', '03:00');
+
                     expect($startTime.val()).toEqual('03:00');
                     expect($('.time-picker').find('.time-picker--selected').length).toEqual(1);
                     expect($('.time-picker').find('.time-picker--selected').data('time')).toEqual('03:00');
@@ -376,6 +364,19 @@ define([
 
                     expect($('.time-picker').find('.time-picker--selected').length).toEqual(1);
                     expect($('.time-picker').find('.time-picker--selected').data('time')).toEqual('08:00');
+                });
+
+                it('triggers an "onSelect" event with the selected time', function() {
+                    startTime.timepicker('select', '03:00');
+
+                    expect(onSelectSpy.calledOnce).toEqual(true);
+                    expect(onSelectSpy.args[0][0]).toEqual('03:00');
+                });
+
+                it('does not trigger an "onSelect" event if silent is true', function() {
+                    startTime.timepicker('select', '03:00', {silent: true});
+
+                    expect(onSelectSpy.called).toEqual(false);
                 });
             });
 
@@ -511,7 +512,7 @@ define([
                     beforeEach(function() {
                         startTime = $startTime.timepicker({
                             interval: param.interval
-                        }).click();
+                        });
 
                         timePicker = startTime.data('timepicker');
 

@@ -42,7 +42,7 @@ jQuery(function($) {
 </script>
 ```
 
-```$.timepicker()``` enhances an input field by showing a list of preset times. Clicking an option updates the input field value.
+`$.timepicker()` enhances an input field by showing a list of preset times. Clicking an option updates the input field value.
 
 ### Defaults
 
@@ -61,7 +61,7 @@ $.timepicker.defaults = {
     interval: '01:00'
 };
 ```
-You can change these defaults globaly by setting the value before calling ```$.timepicker```.
+You can change these defaults globally by setting the value before calling ```$.timepicker```.
 
 ```
 // set the time interval to every 30 minutes
@@ -121,13 +121,36 @@ $('input').timepicker('destroy');
 
 __Selector__
 
-You can use the ```:timepicker``` custom selector to find all active time pickers.
+You can use the `:timepicker` custom selector to find all active time pickers.
 
 ```
 // close all timepickers
 $(':timepicker').timepicker('close')
 ```
 
+
+__Events__
+
+You can supply a callback to hook into timepicker events.
+
+**onOpen** is triggered when the timepicker is opened.
+
+```
+    picker.bind('onOpen', function(){
+        console.log('timepicker opened')
+    });
+    picker.open(); // logs "timepicker opened"
+```
+
+**onSelect** is triggered when a preset time is selected, the callback receives the selected time.
+
+```
+    picker.bind('onSelect', function(time){
+        console.log('time selected', time);
+    });
+
+    picker.select('03:00'); // logs "time selected 03:00"
+```
 
 ## Release History
 _(Nothing yet)_
