@@ -1,6 +1,6 @@
 {
   "name": "timepicker",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "main": "lib/timepicker/timepicker.js",
   "ignore": [
     "**/.*",
