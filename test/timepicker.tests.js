@@ -2,7 +2,7 @@
 
 define([
     'sinon',
-    'lib/timepicker/timepicker'
+    '../lib/timepicker/timepicker'
 ], function(sinon, timepicker) {
     'use strict';
 
