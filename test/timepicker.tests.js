@@ -2,15 +2,16 @@
 
 define([
     'sinon',
+    'jquery',
     '../lib/timepicker/timepicker'
-], function(sinon, timepicker) {
+], function(sinon, $, timepicker) {
     'use strict';
 
     var sandbox,
         startTimeHtml = '<input name="start_time" />',
         endTimeHtml = '<input name="end_time" />',
         normalInput = '<input />',
-        $testArea = $('#testArea'),
+        $testArea = $('<div id=testArea />').appendTo('body'),
         $elems,
         $startTime,
         $endTime,
