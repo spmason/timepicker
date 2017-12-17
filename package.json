@@ -2,6 +2,7 @@
   "name": "timepicker",
   "description": "time picker",
   "version": "0.2.1",
+  "main": "lib/timepicker/timepicker",
   "repository": {
     "type": "git",
     "url": "git://github.com/BrandwatchLtd/timepicker.git"
